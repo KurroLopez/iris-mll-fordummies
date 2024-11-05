@@ -12,7 +12,8 @@
     "docker-compose": {
       "service": "iris",
       "internalPort": 52773
-    }
+    },
+    "server": "docker"
   },
   "intersystems.testingManager.client.relativeTestRoot": "tests"
 
