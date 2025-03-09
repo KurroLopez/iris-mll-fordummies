@@ -14,4 +14,3 @@ COPY data data
 RUN iris start IRIS \
     && iris session IRIS < iris.script \
     && iris stop IRIS quietly 
-
