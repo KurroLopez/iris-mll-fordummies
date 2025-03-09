@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="Cache" version="25">
+  <Document name="iris-mll-fordummies.ZPM">
+    <Module>
+      <Name>iris-mll-fordummies</Name>
+	    <Description>MLL Intersystems Demo</Description> 
+      <Version>1.0.0</Version>
+      <Packaging>module</Packaging>
+      <SourcesRoot>src</SourcesRoot>
+      <Resource Name="St.MLL.PKG"/>
+    </Module>
+  </Document>
+</Export>

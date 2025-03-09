@@ -1,0 +1,10 @@
+  zn "%SYS"
+  Do ##class(Security.Users).UnExpireUserPasswords("*")
+  set prop("DeepSeeEnabled")=1
+  do ##class(Security.Applications).Modify("/csp/user",.prop)
+  zn "USER"
+  Do $system.OBJ.Load("/opt/irisbuild/src/zpm.xml", "ck")
+  zpm "load /opt/irisbuild/ -v":1
+  zpm "install webterminal -v" 
+  hang 2
+  halt
