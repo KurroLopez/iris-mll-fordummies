@@ -2,9 +2,17 @@
   Do ##class(Security.Users).UnExpireUserPasswords("*")
   set prop("DeepSeeEnabled")=1
   do ##class(Security.Applications).Modify("/csp/user",.prop)
+  do $SYSTEM.SQL.Execute("UPDATE Security.Resources set PublicPermission = 1 where ID = '%db_user'")
   zn "USER"
-  Do $system.OBJ.Load("/opt/irisbuild/src/zpm.xml", "ck")
-  zpm "load /opt/irisbuild/ -v":1
+  do $system.OBJ.Import("/opt/irisbuild/src/St","ck")
+  set version="latest" 
+  set r=##class(%Net.HttpRequest).%New()
+  set r.Server="pm.community.intersystems.com"
+  set r.SSLConfiguration="ISC.FeatureTracker.SSL.Config" 
+  do r.Get("/packages/zpm/"_version_"/installer")
+  do $system.OBJ.LoadStream(r.HttpResponse.Data,"c")
+  //zpm "load /opt/irisbuild/ -v":1
+  zpm "enable -community"
   zpm "install webterminal -v" 
   hang 2
   halt
