@@ -4,15 +4,15 @@
   do ##class(Security.Applications).Modify("/csp/user",.prop)
   do $SYSTEM.SQL.Execute("UPDATE Security.Resources set PublicPermission = 1 where ID = '%db_user'")
   zn "USER"
-  do $system.OBJ.Import("/opt/irisbuild/src/St","ck")
   set version="latest" 
-  set r=##class(%Net.HttpRequest).%New()
-  set r.Server="pm.community.intersystems.com"
-  set r.SSLConfiguration="ISC.FeatureTracker.SSL.Config" 
-  do r.Get("/packages/zpm/"_version_"/installer")
-  do $system.OBJ.LoadStream(r.HttpResponse.Data,"c")
-  //zpm "load /opt/irisbuild/ -v":1
+  set request=##class(%Net.HttpRequest).%New()
+  set request.Server="pm.community.intersystems.com"
+  set request.SSLConfiguration="ISC.FeatureTracker.SSL.Config" 
+  do request.Get("/packages/zpm/"_version_"/installer")
+  do $system.OBJ.LoadStream(request.HttpResponse.Data,"c")
   zpm "enable -community"
   zpm "install webterminal -v" 
+  hang 2
+  do $system.OBJ.LoadDir("/opt/irisbuild/src/St","ck", , 1)
   hang 2
   halt
