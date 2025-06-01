@@ -13,6 +13,6 @@
   zpm "enable -community"
   zpm "install webterminal -v" 
   hang 2
-  do $system.OBJ.LoadDir("/opt/irisbuild/src/St","ck", , 1)
+  do $system.OBJ.Import("/opt/irisbuild/src/St","ck", , 1)
   hang 2
   halt
