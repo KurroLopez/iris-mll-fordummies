@@ -1,4 +1,4 @@
-ARG IMAGE=containers.intersystems.com/intersystems/iris-ml-community:latest-em
+ARG IMAGE=containers.intersystems.com/intersystems/iris-community:latest-em
 FROM $IMAGE
 USER root
 WORKDIR /opt/irisbuild
@@ -10,6 +10,8 @@ COPY src src
 COPY module.xml module.xml
 COPY iris.script iris.script
 COPY data data
+
+RUN pip install --index-url https://registry.intersystems.com/pypi/simple --no-cache-dir --target /usr/irissys/mgr/python intersystems-iris-automl
 
 RUN iris start IRIS \
     && iris session IRIS < iris.script \
