@@ -4,7 +4,7 @@
     <Module>
       <Name>iris-mll-fordummies</Name>
 	    <Description>MLL Intersystems Demo</Description> 
-      <Version>1.0.0</Version>
+      <Version>1.1.0</Version>
       <Packaging>module</Packaging>
       <SourcesRoot>src</SourcesRoot>
       <Resource Name="St.MLL.PKG"/>
